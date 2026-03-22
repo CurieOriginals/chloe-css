@@ -73,24 +73,24 @@ body {
 
 /* ═══ SPLIT BACKGROUND — SWEET vs HORROR ═══ */
 
-/* Left — warm pink light leak */
+/* Left — warm pink light leak, wider to overlap center */
 body::before {
-    content: ''; position: fixed; left: 0; top: 0; width: 50%; height: 100%;
+    content: ''; position: fixed; left: 0; top: 0; width: 60%; height: 100%;
     background:
-        radial-gradient(ellipse 80% 60% at 0% 0%, rgba(255, 105, 180, 0.1) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 150, 200, 0.05) 0%, transparent 50%),
-        linear-gradient(135deg, rgba(255, 105, 180, 0.04) 0%, transparent 50%);
+        radial-gradient(ellipse 70% 50% at 0% 30%, rgba(255, 105, 180, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 15% 70%, rgba(255, 150, 200, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 60% at 5% 50%, rgba(255, 130, 190, 0.06) 0%, transparent 45%);
     z-index: 0; pointer-events: none
 }
 
-/* Right — deep blood red vignette */
+/* Right — deep blood red vignette, wider to overlap center */
 body::after {
-    content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
+    content: ''; position: fixed; right: 0; top: 0; width: 60%; height: 100%;
     background:
-        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(80, 0, 10, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 100% 100%, rgba(139, 26, 43, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse 120% 80% at 100% 50%, rgba(60, 0, 5, 0.08) 0%, transparent 70%),
-        linear-gradient(225deg, rgba(80, 0, 10, 0.06) 0%, transparent 40%);
+        radial-gradient(ellipse 70% 50% at 100% 30%, rgba(100, 5, 15, 0.22) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 85% 70%, rgba(139, 26, 43, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 80% at 100% 50%, rgba(60, 0, 5, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 95% 20%, rgba(120, 10, 20, 0.12) 0%, transparent 45%);
     z-index: 0; pointer-events: none
 }
 
@@ -524,14 +524,16 @@ div.mt-2 { margin-top: 24px !important }
 
 .co-page { width: 100%; max-width: var(--co-page-width); margin: 0 auto; padding: 0 16px; position: relative; z-index: 2 }
 
-/* ═══ NOISE OVERLAY — right half only ═══ */
+/* ═══ NOISE OVERLAY — right side, fading from center ═══ */
 .co-page::before {
-    content: ''; position: fixed; top: 0; right: 0; width: 50%; height: 100%;
+    content: ''; position: fixed; top: 0; right: 0; width: 65%; height: 100%;
     z-index: -1; pointer-events: none; opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 512px 512px;
     mix-blend-mode: screen;
-    background-color: rgba(139, 26, 43, 0.06)
+    background-color: rgba(139, 26, 43, 0.06);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 60%);
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.5) 30%, black 60%)
 }
 
 /* ═══ BACKGROUND DECORATIONS CONTAINER ═══ */
@@ -575,15 +577,10 @@ div.mt-2 { margin-top: 24px !important }
 .co-drip {
     position: absolute; top: 0; right: var(--x);
     width: var(--w, 3px); height: 0;
-    background: linear-gradient(to bottom, rgba(139, 26, 43, 0.6), rgba(100, 10, 15, 0.8));
-    border-radius: 0 0 50% 50%;
+    background: linear-gradient(to bottom, transparent, rgba(139, 26, 43, 0.5) 15%, rgba(100, 10, 15, 0.7));
+    border-radius: 0 0 999px 999px;
     animation: co-dripDown var(--dur) ease-in var(--d) infinite;
     will-change: height, opacity; opacity: 0
-}
-.co-drip::after {
-    content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
-    width: calc(var(--w, 3px) + 3px); height: calc(var(--w, 3px) + 3px);
-    background: rgba(120, 15, 25, 0.7); border-radius: 50%
 }
 @keyframes co-dripDown {
     0% { height: 0; opacity: 0 }
