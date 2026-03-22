@@ -73,7 +73,7 @@ body {
 
 /* ═══ SPLIT BACKGROUND ═══ */
 
-/* Left — STRONG pink */
+/* Left — FULL #ffc4cd */
 body::before {
     content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
     background: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.4) 40%, transparent 100%);
@@ -87,21 +87,23 @@ body::after {
     z-index: 0; pointer-events: none
 }
 
-/* Cracks — image directly, inverted to bright then colorized red */
+/* Cracks — solid #fc152c clipped by crack image as mask */
 .co-bg-decor::before {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
-    background: url('https://curie-assets.site/images/chloe_cracks.webp') center center / cover no-repeat;
+    background-color: #fc152c;
     z-index: 1; pointer-events: none;
-    filter: invert(1) sepia(1) saturate(50) hue-rotate(330deg) brightness(1.2)
+    -webkit-mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat;
+    mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat
 }
 
-/* Crack glow */
+/* Crack glow — same but blurred */
 .co-bg-decor::after {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
-    background: url('https://curie-assets.site/images/chloe_cracks.webp') center center / cover no-repeat;
-    z-index: 0; pointer-events: none;
-    filter: invert(1) sepia(1) saturate(50) hue-rotate(330deg) brightness(1.5) blur(16px);
-    opacity: 0.4
+    background-color: #fc152c;
+    z-index: 1; pointer-events: none;
+    filter: blur(14px); opacity: 0.4;
+    -webkit-mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat;
+    mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
@@ -538,7 +540,7 @@ div.mt-2 { margin-top: 24px !important }
 
 /* ═══ BACKGROUND DECORATIONS CONTAINER ═══ */
 .co-bg-decor {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden
+    position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden
 }
 
 /* ═══ LEFT SIDE — SAKURA PETALS ═══ */
