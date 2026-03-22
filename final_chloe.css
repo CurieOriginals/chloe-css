@@ -71,26 +71,19 @@ body {
     padding-bottom: 40px !important
 }
 
-/* ═══ SPLIT BACKGROUND — SWEET vs HORROR ═══ */
+/* ═══ SPLIT BACKGROUND — FLAT GLOW, NO CIRCLES ═══ */
 
-/* Left — warm pink light leak, wider to overlap center */
+/* Left — flat pink glow */
 body::before {
-    content: ''; position: fixed; left: 0; top: 0; width: 60%; height: 100%;
-    background:
-        radial-gradient(ellipse 70% 50% at 0% 30%, rgba(255, 105, 180, 0.14) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 15% 70%, rgba(255, 150, 200, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 60% at 5% 50%, rgba(255, 130, 190, 0.06) 0%, transparent 45%);
+    content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
+    background: linear-gradient(to right, rgba(255, 105, 180, 0.1) 0%, transparent 100%);
     z-index: 0; pointer-events: none
 }
 
-/* Right — deep blood red vignette, wider to overlap center */
+/* Right — flat blood red glow */
 body::after {
-    content: ''; position: fixed; right: 0; top: 0; width: 60%; height: 100%;
-    background:
-        radial-gradient(ellipse 70% 50% at 100% 30%, rgba(100, 5, 15, 0.22) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 40% at 85% 70%, rgba(139, 26, 43, 0.15) 0%, transparent 50%),
-        radial-gradient(ellipse 80% 80% at 100% 50%, rgba(60, 0, 5, 0.1) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 30% at 95% 20%, rgba(120, 10, 20, 0.12) 0%, transparent 45%);
+    content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
+    background: linear-gradient(to left, rgba(100, 5, 15, 0.18) 0%, transparent 100%);
     z-index: 0; pointer-events: none
 }
 
@@ -558,22 +551,10 @@ div.mt-2 { margin-top: 24px !important }
     100% { transform: translateY(110vh) translateX(10px) rotate(420deg) scale(0.7); opacity: 0 }
 }
 
-/* ═══ LEFT SIDE — BOKEH LIGHTS ═══ */
-.co-bokeh {
-    position: absolute; border-radius: 50%;
-    left: var(--x); top: var(--y);
-    width: var(--s); height: var(--s);
-    background: radial-gradient(circle, var(--c, rgba(255, 150, 200, 0.2)) 0%, transparent 70%);
-    animation: co-bokehPulse var(--dur) ease-in-out var(--d) infinite;
-    will-change: opacity, transform; opacity: 0
-}
-@keyframes co-bokehPulse {
-    0%, 100% { opacity: 0; transform: scale(0.8) }
-    30% { opacity: 1; transform: scale(1) }
-    70% { opacity: 0.8; transform: scale(1.05) }
-}
+/* Bokeh and lightray removed */
+.co-bokeh { display: none !important }
 
-/* ═══ RIGHT SIDE — BLOOD DRIPS ═══ */
+.co-lightray { display: none !important }
 .co-drip {
     position: absolute; top: 0; right: var(--x);
     width: var(--w, 3px); height: 0;
@@ -606,30 +587,8 @@ div.mt-2 { margin-top: 24px !important }
     85%, 100% { opacity: 0 }
 }
 
-/* ═══ RIGHT SIDE — RED FOG PULSE ═══ */
-.co-fog {
-    position: absolute; right: 0; bottom: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(ellipse 60% 40% at 85% 70%, rgba(80, 0, 10, 0.08) 0%, transparent 70%);
-    animation: co-fogPulse 10s ease-in-out infinite; opacity: 0.5
-}
-@keyframes co-fogPulse {
-    0%, 100% { opacity: 0.3; transform: scale(1) }
-    50% { opacity: 0.7; transform: scale(1.05) }
-}
-
-/* ═══ LEFT SIDE — LIGHT RAYS ═══ */
-.co-lightray {
-    position: absolute; left: 0; top: 0; width: 50%; height: 100%;
-    background:
-        linear-gradient(125deg, rgba(255, 200, 220, 0.04) 0%, transparent 30%),
-        linear-gradient(140deg, rgba(255, 180, 210, 0.03) 0%, transparent 25%);
-    animation: co-lightPulse 8s ease-in-out infinite
-}
-@keyframes co-lightPulse {
-    0%, 100% { opacity: 0.6 }
-    50% { opacity: 1 }
-}
+/* Fog removed */
+.co-fog { display: none !important }
 .co-header { display: none !important }
 .co-header-img { display: none !important }
 .co-header-fade { display: none !important }
