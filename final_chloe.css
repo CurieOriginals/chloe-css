@@ -15,14 +15,14 @@
     --co-surface-hover: rgba(28, 28, 34, 0.98);
     --co-glass: rgba(255, 255, 255, 0.02);
     --co-glass-border: rgba(255, 255, 255, 0.08);
-    --co-pink: #ff69b4;
-    --co-blood: #8b1a2b;
-    --co-accent: #ff69b4;
-    --co-accent-soft: #ffb3d9;
+    --co-pink: #fc152c;
+    --co-blood: #fc152c;
+    --co-accent: #fc152c;
+    --co-accent-soft: #ff6b7a;
     --co-accent-deep: #ffd6eb;
-    --co-accent-glow: rgba(255, 105, 180, 0.15);
-    --co-blood-glow: rgba(139, 26, 43, 0.2);
-    --co-gold: #8b1a2b;
+    --co-accent-glow: rgba(252, 21, 44, 0.15);
+    --co-blood-glow: rgba(252, 21, 44, 0.2);
+    --co-gold: #fc152c;
     --co-text: rgba(235, 235, 240, 0.92);
     --co-text-dim: rgba(180, 180, 195, 0.55);
     --co-text-faint: rgba(140, 140, 155, 0.3);
@@ -43,8 +43,8 @@
     --co-btn-transition: all .25s cubic-bezier(.4, 0, .2, 1);
     --co-page-width: 1300px;
     --co-border-idle: #1a1a1e;
-    --co-border-pink: #ff69b4;
-    --co-border-blood: #8b1a2b
+    --co-border-pink: #fc152c;
+    --co-border-blood: #fc152c
 }
 
 @media (min-width:768px) { :root { --co-inset: 24px } }
@@ -87,23 +87,19 @@ body::after {
     z-index: 0; pointer-events: none
 }
 
-/* Cracks — solid #fc152c clipped by crack image as mask */
+/* Cracks — direct red image */
 .co-bg-decor::before {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
-    background-color: #fc152c;
-    z-index: 1; pointer-events: none;
-    -webkit-mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat;
-    mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat
+    background: url('https://curie-assets.site/images/chloe_cracks_red.webp') center / cover no-repeat;
+    z-index: 1; pointer-events: none
 }
 
-/* Crack glow — same but blurred */
+/* Crack glow */
 .co-bg-decor::after {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
-    background-color: #fc152c;
+    background: url('https://curie-assets.site/images/chloe_cracks_red.webp') center / cover no-repeat;
     z-index: 1; pointer-events: none;
-    filter: blur(14px); opacity: 0.4;
-    -webkit-mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat;
-    mask: url('https://curie-assets.site/images/chloe_cracks.webp') center / cover no-repeat
+    filter: blur(14px); opacity: 0.4
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
@@ -251,7 +247,7 @@ div.mt-4:has(svg.lucide-messages-square) button.ant-btn:hover {
     color: #fff !important; box-shadow: 0 0 16px var(--co-blood-glow) !important
 }
 div.mt-4:has(svg.lucide-messages-square) button.ant-btn:active {
-    background: rgba(139, 26, 43, 0.12) !important; box-shadow: none !important; transition-duration: 0s !important
+    background: rgba(252, 21, 44, 0.12) !important; box-shadow: none !important; transition-duration: 0s !important
 }
 
 /* Chat With — solid pink, blood red on hover */
@@ -261,7 +257,7 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
     color: #fff !important; font-weight: 700 !important; font-size: 0.88em !important;
     border: none !important; clip-path: none !important; padding: 0 24px !important;
     border-radius: var(--co-radius-sm) !important;
-    box-shadow: 0 0 16px rgba(255, 105, 180, 0.4), 0 0 32px rgba(255, 105, 180, 0.15) !important;
+    box-shadow: 0 0 16px rgba(252, 21, 44, 0.4), 0 0 32px rgba(252, 21, 44, 0.15) !important;
     animation: none !important;
     transition: background .3s ease, box-shadow .3s ease !important
 }
@@ -270,7 +266,7 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover {
     transform: none !important;
     background: var(--co-blood) !important; color: #fff !important;
-    box-shadow: 0 0 20px rgba(139, 26, 43, 0.6), 0 0 40px rgba(139, 26, 43, 0.3) !important
+    box-shadow: 0 0 20px rgba(252, 21, 44, 0.6), 0 0 40px rgba(252, 21, 44, 0.3) !important
 }
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover svg { color: #fff !important; stroke: #fff !important }
 div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-square):hover::before { display: none !important }
@@ -319,14 +315,14 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star) {
     transition: background .2s ease, box-shadow .3s ease, border-color .2s ease !important; clip-path: none !important
 }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]) {
-    color: var(--co-blood) !important; background: rgba(139, 26, 43, 0.08) !important;
+    color: var(--co-blood) !important; background: rgba(252, 21, 44, 0.08) !important;
     border-color: var(--co-blood) !important; box-shadow: none !important;
     animation: co-favShift 6s ease-in-out infinite !important
 }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"])::before { display: none !important }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"])::after { display: none !important }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):hover {
-    transform: none !important; background: rgba(139, 26, 43, 0.15) !important;
+    transform: none !important; background: rgba(252, 21, 44, 0.15) !important;
     box-shadow: 0 0 20px var(--co-blood-glow) !important
 }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star svg path[d*="M664.8 561.6"]):hover::before { display: none !important }
@@ -337,7 +333,7 @@ div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[
     animation: none !important; clip-path: none !important
 }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover {
-    color: var(--co-blood) !important; background: rgba(139, 26, 43, 0.06) !important; border-color: var(--co-blood) !important
+    color: var(--co-blood) !important; background: rgba(252, 21, 44, 0.06) !important; border-color: var(--co-blood) !important
 }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"]))::before { display: none !important }
 div.mt-4.text-right.justify-end button.ant-btn:has(.anticon-star):not(:has(path[d*="M664.8 561.6"])):hover::before { display: none !important }
@@ -409,7 +405,7 @@ div[length][color]:has(.msg-mkdn-container)~*, div[length][color]:has(.msg-mkdn-
 /* Comments */
 .ant-comment { background: transparent !important; border-bottom: 1px solid var(--co-glass-border) !important; padding: 16px 0 !important; margin: 0 !important; max-width: 100% !important; overflow: hidden !important }
 .ant-comment:last-child { border-bottom: none !important }
-.ant-comment-avatar .ant-avatar { border: 2px solid rgba(139, 26, 43, 0.3) !important; border-radius: var(--co-radius-xs) !important }
+.ant-comment-avatar .ant-avatar { border: 2px solid rgba(252, 21, 44, 0.3) !important; border-radius: var(--co-radius-xs) !important }
 .ant-comment-content-author-name { font-weight: 700 !important; color: #fff !important; font-size: 0.9rem !important }
 .ant-comment-content-author-name a { color: #fff !important; text-decoration: none !important }
 .ant-comment-content-author-name a:hover { color: var(--co-blood) !important }
@@ -420,10 +416,10 @@ div[length][color]:has(.msg-mkdn-container)~*, div[length][color]:has(.msg-mkdn-
 .ant-comment-actions > li { color: var(--co-text-faint) !important; font-size: 0.8rem !important }
 .ant-comment-actions > li:hover { color: var(--co-blood) !important }
 .ant-comment-actions > li > span { color: inherit !important }
-.ant-comment-nested { margin-left: 44px !important; border-left: 2px solid rgba(139, 26, 43, 0.15) !important; padding-left: 16px !important }
+.ant-comment-nested { margin-left: 44px !important; border-left: 2px solid rgba(252, 21, 44, 0.15) !important; padding-left: 16px !important }
 .ant-comment .ant-form-item { margin-bottom: 0 !important }
 .ant-comment textarea.ant-input { background: rgba(255, 255, 255, 0.02) !important; border: 1px solid var(--co-glass-border) !important; border-radius: var(--co-radius-xs) !important; color: var(--co-text) !important; padding: 12px 16px !important; resize: vertical !important; min-height: 80px !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important }
-.ant-comment textarea.ant-input:focus { border-color: var(--co-blood) !important; box-shadow: 0 0 0 2px rgba(139, 26, 43, 0.1) !important }
+.ant-comment textarea.ant-input:focus { border-color: var(--co-blood) !important; box-shadow: 0 0 0 2px rgba(252, 21, 44, 0.1) !important }
 .ant-comment textarea.ant-input::placeholder { color: var(--co-text-faint) !important }
 .ant-collapse .ant-form, .ant-collapse .ant-form-item, .ant-collapse .ant-space, .ant-collapse .ant-space-item { max-width: 100% !important; box-sizing: border-box !important }
 .ant-collapse-content-box, .ant-collapse-content-box .ant-descriptions-item-content { font-family: var(--co-font-mono) !important; font-size: 0.85em; color: var(--co-text) !important }
@@ -434,8 +430,8 @@ div[length][color]:has(.msg-mkdn-container)~*, div[length][color]:has(.msg-mkdn-
 .ant-collapse-content-box .ant-descriptions-item { background: transparent !important }
 
 /* Tags */
-.ant-tag { font-size: 0.7em !important; padding: 0.2em 0.65em !important; border-radius: 0 !important; background: var(--co-accent-glow) !important; border: 1px solid rgba(255, 105, 180, 0.15) !important; font-family: var(--co-font-body) !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; color: var(--co-accent-soft) !important; line-height: 1.6 !important; transition: all .2s ease !important }
-.ant-tag:hover { background: rgba(139, 26, 43, 0.2) !important; color: #fff !important; border-color: var(--co-blood) !important }
+.ant-tag { font-size: 0.7em !important; padding: 0.2em 0.65em !important; border-radius: 0 !important; background: var(--co-accent-glow) !important; border: 1px solid rgba(252, 21, 44, 0.15) !important; font-family: var(--co-font-body) !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.05em !important; color: var(--co-accent-soft) !important; line-height: 1.6 !important; transition: all .2s ease !important }
+.ant-tag:hover { background: rgba(252, 21, 44, 0.2) !important; color: #fff !important; border-color: var(--co-blood) !important }
 .ant-space.ant-space-horizontal.ant-space-align-center { max-height: none !important; overflow: visible !important; flex-wrap: wrap !important; display: flex !important; flex-direction: row !important; gap: 6px !important }
 .ant-space.ant-space-horizontal.ant-space-align-center > .ant-space-item { width: auto !important; flex: none !important }
 div.mt-2 { margin-top: 24px !important }
@@ -447,12 +443,12 @@ div.mt-2 { margin-top: 24px !important }
 @keyframes co-glowFloat { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8%) } }
 @keyframes co-gradientShift { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
 @keyframes co-dividerShift {
-    0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
+    0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(252, 21, 44, 0.3) }
     86% { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5) }
-    87% { background: var(--co-blood); box-shadow: 0 0 8px rgba(139, 26, 43, 0.5) }
-    88% { background: var(--co-pink); box-shadow: 0 0 4px rgba(255, 105, 180, 0.2) }
-    89% { background: var(--co-blood); box-shadow: 0 0 10px rgba(139, 26, 43, 0.6) }
-    91%, 100% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
+    87% { background: var(--co-blood); box-shadow: 0 0 8px rgba(252, 21, 44, 0.5) }
+    88% { background: var(--co-pink); box-shadow: 0 0 4px rgba(252, 21, 44, 0.2) }
+    89% { background: var(--co-blood); box-shadow: 0 0 10px rgba(252, 21, 44, 0.6) }
+    91%, 100% { background: var(--co-pink); box-shadow: 0 0 8px rgba(252, 21, 44, 0.3) }
 }
 
 /* Border glitch — VHS flicker instead of smooth shift */
@@ -504,25 +500,25 @@ div.mt-2 { margin-top: 24px !important }
     90%, 100% { border-color: var(--co-pink); color: var(--co-pink) }
 }
 @keyframes co-glowShift {
-    0%, 82% { box-shadow: 0 0 12px rgba(255, 105, 180, 0.3), -4px 0 8px rgba(255, 105, 180, 0.2) }
-    84% { box-shadow: 0 0 20px rgba(139, 26, 43, 0.6), 0 0 4px rgba(255, 255, 255, 0.3) }
-    86% { box-shadow: 0 0 6px rgba(255, 105, 180, 0.1) }
-    88% { box-shadow: 0 0 18px rgba(139, 26, 43, 0.5), 4px 0 10px rgba(139, 26, 43, 0.3) }
-    90%, 100% { box-shadow: 0 0 12px rgba(255, 105, 180, 0.3), -4px 0 8px rgba(255, 105, 180, 0.2) }
+    0%, 82% { box-shadow: 0 0 12px rgba(252, 21, 44, 0.3), -4px 0 8px rgba(252, 21, 44, 0.2) }
+    84% { box-shadow: 0 0 20px rgba(252, 21, 44, 0.6), 0 0 4px rgba(255, 255, 255, 0.3) }
+    86% { box-shadow: 0 0 6px rgba(252, 21, 44, 0.1) }
+    88% { box-shadow: 0 0 18px rgba(252, 21, 44, 0.5), 4px 0 10px rgba(252, 21, 44, 0.3) }
+    90%, 100% { box-shadow: 0 0 12px rgba(252, 21, 44, 0.3), -4px 0 8px rgba(252, 21, 44, 0.2) }
 }
 
 /* Legacy stubs */
-@keyframes co-chatGlow { 0%, 100% { box-shadow: 0 0 12px rgba(255, 105, 180, 0.3) } 50% { box-shadow: 0 0 20px rgba(139, 26, 43, 0.4) } }
+@keyframes co-chatGlow { 0%, 100% { box-shadow: 0 0 12px rgba(252, 21, 44, 0.3) } 50% { box-shadow: 0 0 20px rgba(252, 21, 44, 0.4) } }
 @keyframes co-pulseGlow { 0%, 100% { box-shadow: none } }
 @keyframes co-shimmer { 0% { background-position: -200% center } 100% { background-position: 200% center } }
 @keyframes co-previewPulse { 0%, 100% { box-shadow: none } }
 @keyframes co-borderSweep { 0%, 100% { opacity: 0 } }
 @keyframes co-borderShimmer { 0%, 100% { opacity: 0 } }
-@keyframes co-foxFlicker { 0%, 100% { border-color: rgba(139, 26, 43, 0.08) } }
+@keyframes co-foxFlicker { 0%, 100% { border-color: rgba(252, 21, 44, 0.08) } }
 @keyframes co-foxInnerGlow { 0%, 100% { transform: translate(0, 0) } }
 @keyframes co-foxEdgeFlame { 0%, 100% { opacity: 1 } }
 @keyframes co-foxBorderShimmer { 0%, 100% { opacity: 0.3 } }
-@keyframes co-foxFirePulse { 0%, 100% { box-shadow: 0 0 8px rgba(255, 105, 180, 0.2) } 50% { box-shadow: 0 0 14px rgba(139, 26, 43, 0.3) } }
+@keyframes co-foxFirePulse { 0%, 100% { box-shadow: 0 0 8px rgba(252, 21, 44, 0.2) } 50% { box-shadow: 0 0 14px rgba(252, 21, 44, 0.3) } }
 @keyframes co-heartbeatL { 0%, 100% { border-left-color: var(--co-border-idle) } }
 @keyframes co-heartbeatR { 0%, 100% { border-right-color: var(--co-border-idle) } }
 @keyframes co-heartbeatLR { 0%, 100% { border-left-color: var(--co-border-idle); border-right-color: var(--co-border-idle) } }
@@ -546,7 +542,7 @@ div.mt-2 { margin-top: 24px !important }
 /* ═══ LEFT SIDE — SAKURA PETALS ═══ */
 .co-petal {
     position: absolute; left: var(--x); top: -20px; width: var(--s); height: var(--s);
-    background: var(--c, rgba(255, 150, 200, 0.35));
+    background: var(--c, rgba(252, 60, 80, 0.35));
     border-radius: 50% 0 50% 0;
     animation: co-petalFall var(--dur) linear var(--d) infinite;
     will-change: transform, opacity; opacity: 0
@@ -567,7 +563,7 @@ div.mt-2 { margin-top: 24px !important }
 .co-drip {
     position: absolute; top: 0; right: var(--x);
     width: var(--w, 3px); height: 0;
-    background: linear-gradient(to bottom, transparent, rgba(139, 26, 43, 0.5) 15%, rgba(100, 10, 15, 0.7));
+    background: linear-gradient(to bottom, transparent, rgba(252, 21, 44, 0.5) 15%, rgba(100, 10, 15, 0.7));
     border-radius: 0 0 999px 999px;
     animation: co-dripDown var(--dur) ease-in var(--d) infinite;
     will-change: height, opacity; opacity: 0
@@ -584,7 +580,7 @@ div.mt-2 { margin-top: 24px !important }
 .co-scratch {
     position: absolute; right: var(--x); top: var(--y);
     width: 2px; height: var(--h, 80px);
-    background: linear-gradient(to bottom, transparent, rgba(139, 26, 43, 0.3), rgba(139, 26, 43, 0.15), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(252, 21, 44, 0.3), rgba(252, 21, 44, 0.15), transparent);
     transform: rotate(var(--r, -20deg));
     opacity: 0; animation: co-scratchReveal var(--dur, 12s) ease var(--d, 0s) infinite
 }
@@ -630,7 +626,7 @@ div.mt-2 { margin-top: 24px !important }
 .co-card-label::before {
     content: ''; width: 3px; height: 14px; border-radius: 0;
     background: var(--co-pink);
-    flex-shrink: 0; box-shadow: 0 0 8px rgba(255, 105, 180, 0.3);
+    flex-shrink: 0; box-shadow: 0 0 8px rgba(252, 21, 44, 0.3);
     animation: co-dividerShift 8s ease-in-out infinite
 }
 
@@ -648,7 +644,7 @@ div.mt-2 { margin-top: 24px !important }
     padding: 0 !important; overflow: hidden;
     border-style: solid !important; border-width: 1px 1px 1px 2px !important;
     border-color: var(--co-border-idle);
-    box-shadow: 0 0 12px rgba(255, 105, 180, 0.2), 0 0 12px rgba(139, 26, 43, 0.15);
+    box-shadow: 0 0 12px rgba(252, 21, 44, 0.2), 0 0 12px rgba(252, 21, 44, 0.15);
     animation: co-glowShift 6s ease-in-out infinite, co-borderShiftL 8s ease-in-out infinite !important;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 100%, var(--co-cut) 100%, 0 calc(100% - var(--co-cut)))
@@ -705,7 +701,7 @@ div.mt-2 { margin-top: 24px !important }
 .co-sc-entries::-webkit-scrollbar { width: 4px }
 .co-sc-entries::-webkit-scrollbar-track { background: transparent }
 .co-sc-entries::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 2px }
-.co-sc-entries::-webkit-scrollbar-thumb:hover { background: rgba(139, 26, 43, 0.3) }
+.co-sc-entries::-webkit-scrollbar-thumb:hover { background: rgba(252, 21, 44, 0.3) }
 .co-sc-entry {
     flex: 0 0 125px; display: flex; align-items: center; gap: 16px;
     padding: 0 24px; border-bottom: 1px solid rgba(255, 255, 255, 0.04);
@@ -713,10 +709,10 @@ div.mt-2 { margin-top: 24px !important }
 }
 .co-sc-entry:last-child { border-bottom: none }
 .co-sc-entry:hover {
-    background: linear-gradient(90deg, rgba(139, 26, 43, 0.08) 0%, rgba(139, 26, 43, 0.02) 40%, transparent 100%);
+    background: linear-gradient(90deg, rgba(252, 21, 44, 0.08) 0%, rgba(252, 21, 44, 0.02) 40%, transparent 100%);
     border-left: 2px solid var(--co-blood);
     padding-left: 22px;
-    box-shadow: inset 4px 0 20px rgba(139, 26, 43, 0.04)
+    box-shadow: inset 4px 0 20px rgba(252, 21, 44, 0.04)
 }
 .co-sc-entry:hover .co-sc-etext p { color: rgba(235, 235, 240, 0.85) }
 .co-sc-num {
@@ -747,12 +743,12 @@ div.mt-2 { margin-top: 24px !important }
     border: 1px solid; line-height: 1.6
 }
 .co-badge-orange {
-    color: var(--co-blood); border-color: rgba(139, 26, 43, 0.4);
-    background: rgba(139, 26, 43, 0.08)
+    color: var(--co-blood); border-color: rgba(252, 21, 44, 0.4);
+    background: rgba(252, 21, 44, 0.08)
 }
 .co-badge-blue {
-    color: var(--co-pink); border-color: rgba(255, 105, 180, 0.4);
-    background: rgba(255, 105, 180, 0.08)
+    color: var(--co-pink); border-color: rgba(252, 21, 44, 0.4);
+    background: rgba(252, 21, 44, 0.08)
 }
 .co-badge-green {
     color: #4ade80; border-color: rgba(74, 222, 128, 0.4);
@@ -795,16 +791,16 @@ div.mt-2 { margin-top: 24px !important }
 .co-preset-inline {
     display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     margin-top: auto; padding: 10px 28px; border-radius: 0;
-    background: transparent; border: 1px solid rgba(255, 105, 180, 0.35);
+    background: transparent; border: 1px solid rgba(252, 21, 44, 0.35);
     text-decoration: none; color: var(--co-pink); font-family: var(--co-font-body);
     font-size: 0.85em; font-weight: 600; letter-spacing: 0.03em;
     transition: var(--co-btn-transition); box-shadow: none
 }
 .co-preset-inline:hover {
     transform: translateY(-2px); color: #fff; opacity: 1;
-    background: linear-gradient(135deg, rgba(139, 26, 43, 0.1), rgba(139, 26, 43, 0.04));
+    background: linear-gradient(135deg, rgba(252, 21, 44, 0.1), rgba(252, 21, 44, 0.04));
     border-color: var(--co-blood);
-    box-shadow: 0 0 12px rgba(139, 26, 43, 0.25), 0 4px 20px rgba(139, 26, 43, 0.1)
+    box-shadow: 0 0 12px rgba(252, 21, 44, 0.25), 0 4px 20px rgba(252, 21, 44, 0.1)
 }
 .co-preset-inline span { position: relative; z-index: 1 }
 
@@ -824,13 +820,13 @@ div.mt-2 { margin-top: 24px !important }
     background: transparent; color: var(--co-pink); font-family: var(--co-font-body);
     font-size: 0.85em; font-weight: 600; text-decoration: none; letter-spacing: 0.03em;
     transition: var(--co-btn-transition);
-    border: 1px solid rgba(255, 105, 180, 0.35); box-shadow: none
+    border: 1px solid rgba(252, 21, 44, 0.35); box-shadow: none
 }
 .co-btn:hover {
     transform: translateY(-2px); color: #fff; opacity: 1;
-    background: linear-gradient(135deg, rgba(139, 26, 43, 0.1), rgba(139, 26, 43, 0.04));
+    background: linear-gradient(135deg, rgba(252, 21, 44, 0.1), rgba(252, 21, 44, 0.04));
     border-color: var(--co-blood);
-    box-shadow: 0 0 12px rgba(139, 26, 43, 0.25), 0 4px 20px rgba(139, 26, 43, 0.1)
+    box-shadow: 0 0 12px rgba(252, 21, 44, 0.25), 0 4px 20px rgba(252, 21, 44, 0.1)
 }
 
 /* Discord button — white bg, black text */
@@ -852,14 +848,14 @@ div.mt-2 { margin-top: 24px !important }
 
 /* Support button — blood red bg */
 .co-btn-support {
-    background: var(--co-blood) !important; color: #fff !important;
-    border: 1px solid var(--co-blood) !important;
+    background: #fc152c !important; color: #fff !important;
+    border: 1px solid #fc152c !important;
     box-shadow: none !important
 }
 .co-btn-support:hover {
-    background: var(--co-blood) !important; color: #fff !important;
-    border-color: var(--co-blood) !important;
-    box-shadow: 0 0 14px rgba(139, 26, 43, 0.5), 0 4px 16px rgba(139, 26, 43, 0.3) !important;
+    background: #fc152c !important; color: #fff !important;
+    border-color: #fc152c !important;
+    box-shadow: 0 0 14px rgba(252, 21, 44, 0.5), 0 4px 16px rgba(252, 21, 44, 0.3) !important;
     transform: translateY(-2px)
 }
 .co-btn-heart {
@@ -897,7 +893,7 @@ div.mt-2 { margin-top: 24px !important }
 }
 .co-meet-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(255, 105, 180, 0.15) 0%, transparent 30%, transparent 70%, rgba(139, 26, 43, 0.15) 100%);
+    background: linear-gradient(90deg, rgba(252, 21, 44, 0.15) 0%, transparent 30%, transparent 70%, rgba(252, 21, 44, 0.15) 100%);
     z-index: 1; pointer-events: none; transition: opacity 0.3s ease
 }
 .co-meet-text {
@@ -911,7 +907,7 @@ div.mt-2 { margin-top: 24px !important }
 .co-meet-banner:hover .co-meet-img { filter: brightness(0.65); transform: scale(1.03) }
 .co-meet-banner:hover .co-meet-text {
     letter-spacing: 0.12em;
-    text-shadow: 0 0 20px rgba(255, 105, 180, 0.5), 0 0 40px rgba(139, 26, 43, 0.3), 0 2px 12px rgba(0, 0, 0, 0.6)
+    text-shadow: 0 0 20px rgba(252, 21, 44, 0.5), 0 0 40px rgba(252, 21, 44, 0.3), 0 2px 12px rgba(0, 0, 0, 0.6)
 }
 
 @media (max-width: 640px) {
@@ -929,7 +925,7 @@ div.mt-2 { margin-top: 24px !important }
     text-decoration: none; cursor: pointer;
     transition: transform .25s ease, box-shadow .25s ease
 }
-.co-meet-banner:hover { transform: translateY(-2px); opacity: 1; box-shadow: 0 0 20px rgba(255, 105, 180, 0.15) }
+.co-meet-banner:hover { transform: translateY(-2px); opacity: 1; box-shadow: 0 0 20px rgba(252, 21, 44, 0.15) }
 .co-meet-img {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center; display: block
@@ -946,11 +942,11 @@ div.mt-2 { margin-top: 24px !important }
     position: relative; z-index: 2;
     font-family: var(--co-font-display); font-size: 1.6em; font-weight: 800;
     color: #fff; letter-spacing: 0.04em;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 105, 180, 0.3);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6), 0 0 30px rgba(252, 21, 44, 0.3);
     transition: text-shadow .3s ease
 }
 .co-meet-banner:hover .co-meet-text {
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6), 0 0 40px rgba(139, 26, 43, 0.4)
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.6), 0 0 40px rgba(252, 21, 44, 0.4)
 }
 @media (max-width: 640px) {
     .co-meet-banner { min-height: 120px }
@@ -970,7 +966,7 @@ div.mt-2 { margin-top: 24px !important }
     background: var(--co-glass); border: 1px solid var(--co-glass-border);
     transition: background .25s ease, border-color .25s ease; text-decoration: none
 }
-.co-credit:hover { background: rgba(139, 26, 43, 0.04); border-color: rgba(139, 26, 43, 0.2); box-shadow: 0 0 15px rgba(139, 26, 43, 0.06); opacity: 1 }
+.co-credit:hover { background: rgba(252, 21, 44, 0.04); border-color: rgba(252, 21, 44, 0.2); box-shadow: 0 0 15px rgba(252, 21, 44, 0.06); opacity: 1 }
 .co-credit-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--co-glass-border) }
 .co-credit-info { min-width: 0 }
 .co-credit-name { font-family: var(--co-font-display); font-size: 0.88em; font-weight: 700; color: var(--co-text); line-height: 1.3 }
