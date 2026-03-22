@@ -11,8 +11,8 @@
 
 :root {
     --co-bg: #0c0c0e;
-    --co-surface: rgba(18, 18, 22, 0.95);
-    --co-surface-hover: rgba(28, 28, 34, 0.98);
+    --co-surface: rgba(5, 5, 5, 0.95);
+    --co-surface-hover: rgba(15, 15, 15, 0.98);
     --co-glass: rgba(255, 255, 255, 0.02);
     --co-glass-border: rgba(255, 255, 255, 0.08);
     --co-pink: #ff69b4;
@@ -38,8 +38,8 @@
     --co-inset: 16px;
     --co-fav-gap: 10px;
     --co-fav-width: clamp(100px, 14vw, 150px);
-    --co-btn-solid: #141416;
-    --co-btn-solid-hover: #1e1e22;
+    --co-btn-solid: #0a0a0a;
+    --co-btn-solid-hover: #111111;
     --co-btn-transition: all .25s cubic-bezier(.4, 0, .2, 1);
     --co-page-width: 1300px;
     --co-border-idle: #1a1a1e;
@@ -676,7 +676,7 @@ div.mt-2 { margin-top: 24px !important }
 }
 .co-sc-preview-box::before { display: none !important }
 .co-sc-preview-box::after { display: none !important }
-.co-sc-imgwrap { position: relative; width: 100%; min-height: 750px; background: rgba(14, 14, 16, 0.95); overflow: hidden }
+.co-sc-imgwrap { position: relative; width: 100%; min-height: 750px; background: rgba(0, 0, 0, 0.95); overflow: hidden }
 .co-sc-placeholder {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     font-family: var(--co-font-body); font-size: 0.9em; font-weight: 500;
