@@ -125,13 +125,13 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
     }
     .ant-row.ant-row-center>.ant-col-lg-6:first-child::after {
         content: '10 GREETINGS  ·  14 IMAGES' !important;
-        grid-column: 1 !important; grid-row: 1 !important;
-        align-self: start !important; justify-self: center !important; z-index: 1 !important;
+        grid-column: 1 !important; grid-row: 2 !important;
+        align-self: end !important; justify-self: end !important; z-index: 1 !important;
         font-family: var(--co-font-body) !important; font-size: 0.78em !important;
         font-weight: 600 !important; color: rgba(255, 255, 255, 0.85) !important;
         white-space: nowrap !important; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
         letter-spacing: 0.14em !important; text-transform: uppercase !important;
-        line-height: 1 !important; padding-top: 12px !important; animation: none !important
+        line-height: 1 !important; padding-bottom: 10px !important; padding-right: 16px !important; animation: none !important
     }
     .ant-row.ant-row-center>.ant-col-lg-6:first-child>* { position: relative !important; z-index: 1 !important }
     .ant-row.ant-row-center>.ant-col-lg-6:first-child>div:not(.mt-4) { display: none !important }
@@ -173,13 +173,13 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
     }
     .ant-col.text-left.ant-col-xs-24.ant-col-lg-6::after {
         content: '10 GREETINGS  ·  14 IMAGES' !important;
-        grid-column: 1 !important; grid-row: 1 !important;
-        align-self: start !important; justify-self: center !important; z-index: 1 !important;
+        grid-column: 1 !important; grid-row: 2 !important;
+        align-self: end !important; justify-self: end !important; z-index: 1 !important;
         font-family: var(--co-font-body) !important; font-size: 0.65em !important;
         font-weight: 600 !important; color: rgba(255, 255, 255, 0.85) !important;
         white-space: nowrap !important; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
         letter-spacing: 0.12em !important; text-transform: uppercase !important;
-        line-height: 1 !important; padding-top: 10px !important; animation: none !important
+        line-height: 1 !important; padding-bottom: 8px !important; padding-right: 12px !important; animation: none !important
     }
     .ant-col.text-left.ant-col-xs-24.ant-col-lg-6>* { position: relative !important; z-index: 1 !important }
     .ant-col.text-left.ant-col-xs-24.ant-col-lg-6>div:not(.mt-4) { display: none !important }
