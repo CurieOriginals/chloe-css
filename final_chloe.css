@@ -15,12 +15,12 @@
     --co-surface-hover: rgba(28, 28, 34, 0.98);
     --co-glass: rgba(255, 255, 255, 0.02);
     --co-glass-border: rgba(255, 255, 255, 0.08);
-    --co-pink: #fc152c;
+    --co-pink: #ff69b4;
     --co-blood: #fc152c;
-    --co-accent: #fc152c;
-    --co-accent-soft: #ff6b7a;
+    --co-accent: #ff69b4;
+    --co-accent-soft: #ffb3d9;
     --co-accent-deep: #ffd6eb;
-    --co-accent-glow: rgba(252, 21, 44, 0.15);
+    --co-accent-glow: rgba(255, 105, 180, 0.15);
     --co-blood-glow: rgba(252, 21, 44, 0.2);
     --co-gold: #fc152c;
     --co-text: rgba(235, 235, 240, 0.92);
@@ -43,7 +43,7 @@
     --co-btn-transition: all .25s cubic-bezier(.4, 0, .2, 1);
     --co-page-width: 1300px;
     --co-border-idle: #1a1a1e;
-    --co-border-pink: #fc152c;
+    --co-border-pink: #ff69b4;
     --co-border-blood: #fc152c
 }
 
