@@ -71,15 +71,26 @@ body {
     padding-bottom: 40px !important
 }
 
-/* ═══ SPLIT BACKGROUND — subtle atmospheric tints ═══ */
+/* ═══ SPLIT BACKGROUND — SWEET vs HORROR ═══ */
+
+/* Left — warm pink light leak */
 body::before {
     content: ''; position: fixed; left: 0; top: 0; width: 50%; height: 100%;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.04) 0%, transparent 70%);
+    background:
+        radial-gradient(ellipse 80% 60% at 0% 0%, rgba(255, 105, 180, 0.1) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(255, 150, 200, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, rgba(255, 105, 180, 0.04) 0%, transparent 50%);
     z-index: 0; pointer-events: none
 }
+
+/* Right — deep blood red vignette */
 body::after {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
-    background: linear-gradient(225deg, rgba(139, 26, 43, 0.06) 0%, transparent 70%);
+    background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(80, 0, 10, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 100% 100%, rgba(139, 26, 43, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse 120% 80% at 100% 50%, rgba(60, 0, 5, 0.08) 0%, transparent 70%),
+        linear-gradient(225deg, rgba(80, 0, 10, 0.06) 0%, transparent 40%);
     z-index: 0; pointer-events: none
 }
 
@@ -513,80 +524,115 @@ div.mt-2 { margin-top: 24px !important }
 
 .co-page { width: 100%; max-width: var(--co-page-width); margin: 0 auto; padding: 0 16px; position: relative; z-index: 2 }
 
-/* ═══ HORROR NOISE OVERLAY — subtle, static, reddish ═══ */
+/* ═══ NOISE OVERLAY — right half only ═══ */
 .co-page::before {
-    content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    opacity: 0.06;
+    content: ''; position: fixed; top: 0; right: 0; width: 50%; height: 100%;
+    z-index: -1; pointer-events: none; opacity: 0.05;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 512px 512px;
     mix-blend-mode: screen;
-    background-color: rgba(139, 26, 43, 0.08)
+    background-color: rgba(139, 26, 43, 0.06)
 }
-/* ═══ FLOATING HEARTS — left side ═══ */
-.co-bg-hearts {
-    position: fixed; left: 0; top: 0; width: 45%; height: 100%;
-    z-index: 0; pointer-events: none; overflow: hidden
+
+/* ═══ BACKGROUND DECORATIONS CONTAINER ═══ */
+.co-bg-decor {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden
 }
-.co-heart {
-    position: absolute;
-    left: var(--x, 10%);
-    bottom: -30px;
-    font-size: var(--s, 16px);
-    color: rgba(255, 105, 180, 0.2);
-    text-shadow: 0 0 8px rgba(255, 105, 180, 0.15);
-    animation: co-floatHeart var(--dur, 14s) ease-in-out var(--d, 0s) infinite;
-    will-change: transform, opacity
+
+/* ═══ LEFT SIDE — SAKURA PETALS ═══ */
+.co-petal {
+    position: absolute; left: var(--x); top: -20px; width: var(--s); height: var(--s);
+    background: var(--c, rgba(255, 150, 200, 0.35));
+    border-radius: 50% 0 50% 0;
+    animation: co-petalFall var(--dur) linear var(--d) infinite;
+    will-change: transform, opacity; opacity: 0
 }
-@keyframes co-floatHeart {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0 }
-    10% { opacity: 1 }
-    50% { transform: translateY(-45vh) rotate(15deg); opacity: 0.8 }
+@keyframes co-petalFall {
+    0% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); opacity: 0 }
+    5% { opacity: 0.8 }
+    25% { transform: translateY(25vh) translateX(30px) rotate(90deg) scale(0.9) }
+    50% { transform: translateY(50vh) translateX(-20px) rotate(200deg) scale(0.85) }
+    75% { transform: translateY(75vh) translateX(40px) rotate(310deg) scale(0.8); opacity: 0.5 }
+    100% { transform: translateY(110vh) translateX(10px) rotate(420deg) scale(0.7); opacity: 0 }
+}
+
+/* ═══ LEFT SIDE — BOKEH LIGHTS ═══ */
+.co-bokeh {
+    position: absolute; border-radius: 50%;
+    left: var(--x); top: var(--y);
+    width: var(--s); height: var(--s);
+    background: radial-gradient(circle, var(--c, rgba(255, 150, 200, 0.2)) 0%, transparent 70%);
+    animation: co-bokehPulse var(--dur) ease-in-out var(--d) infinite;
+    will-change: opacity, transform; opacity: 0
+}
+@keyframes co-bokehPulse {
+    0%, 100% { opacity: 0; transform: scale(0.8) }
+    30% { opacity: 1; transform: scale(1) }
+    70% { opacity: 0.8; transform: scale(1.05) }
+}
+
+/* ═══ RIGHT SIDE — BLOOD DRIPS ═══ */
+.co-drip {
+    position: absolute; top: 0; right: var(--x);
+    width: var(--w, 3px); height: 0;
+    background: linear-gradient(to bottom, rgba(139, 26, 43, 0.6), rgba(100, 10, 15, 0.8));
+    border-radius: 0 0 50% 50%;
+    animation: co-dripDown var(--dur) ease-in var(--d) infinite;
+    will-change: height, opacity; opacity: 0
+}
+.co-drip::after {
+    content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
+    width: calc(var(--w, 3px) + 3px); height: calc(var(--w, 3px) + 3px);
+    background: rgba(120, 15, 25, 0.7); border-radius: 50%
+}
+@keyframes co-dripDown {
+    0% { height: 0; opacity: 0 }
+    5% { opacity: 0.9 }
+    60% { height: var(--h, 120px); opacity: 0.8 }
+    80% { height: var(--h, 120px); opacity: 0.5 }
+    100% { height: var(--h, 120px); opacity: 0 }
+}
+
+/* ═══ RIGHT SIDE — SCRATCH MARKS ═══ */
+.co-scratch {
+    position: absolute; right: var(--x); top: var(--y);
+    width: 2px; height: var(--h, 80px);
+    background: linear-gradient(to bottom, transparent, rgba(139, 26, 43, 0.3), rgba(139, 26, 43, 0.15), transparent);
+    transform: rotate(var(--r, -20deg));
+    opacity: 0; animation: co-scratchReveal var(--dur, 12s) ease var(--d, 0s) infinite
+}
+@keyframes co-scratchReveal {
+    0%, 70% { opacity: 0 }
+    75% { opacity: 0.6 }
+    78% { opacity: 0 }
     80% { opacity: 0.4 }
-    100% { transform: translateY(-105vh) rotate(-10deg); opacity: 0 }
+    85%, 100% { opacity: 0 }
 }
 
-/* ═══ SPIDER WEBS — right side ═══ */
-.co-bg-web {
-    position: fixed; z-index: 0; pointer-events: none;
-    width: 280px; height: 280px;
-    opacity: 0.06;
-    background-image:
-        /* Radial threads from corner */
-        conic-gradient(from 180deg at 100% 0%,
-            transparent 0deg, rgba(139, 26, 43, 0.8) 0.5deg, transparent 1deg,
-            transparent 14deg, rgba(139, 26, 43, 0.6) 14.5deg, transparent 15deg,
-            transparent 29deg, rgba(139, 26, 43, 0.8) 29.5deg, transparent 30deg,
-            transparent 44deg, rgba(139, 26, 43, 0.5) 44.5deg, transparent 45deg,
-            transparent 59deg, rgba(139, 26, 43, 0.7) 59.5deg, transparent 60deg,
-            transparent 74deg, rgba(139, 26, 43, 0.6) 74.5deg, transparent 75deg,
-            transparent 89deg, rgba(139, 26, 43, 0.8) 89.5deg, transparent 90deg,
-            transparent 360deg
-        ),
-        /* Spiral rings */
-        radial-gradient(circle at 100% 0%, transparent 18%, rgba(139, 26, 43, 0.5) 18.5%, transparent 19%),
-        radial-gradient(circle at 100% 0%, transparent 35%, rgba(139, 26, 43, 0.4) 35.5%, transparent 36%),
-        radial-gradient(circle at 100% 0%, transparent 52%, rgba(139, 26, 43, 0.35) 52.5%, transparent 53%),
-        radial-gradient(circle at 100% 0%, transparent 68%, rgba(139, 26, 43, 0.3) 68.5%, transparent 69%),
-        radial-gradient(circle at 100% 0%, transparent 84%, rgba(139, 26, 43, 0.25) 84.5%, transparent 85%)
+/* ═══ RIGHT SIDE — RED FOG PULSE ═══ */
+.co-fog {
+    position: absolute; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(ellipse 60% 40% at 85% 70%, rgba(80, 0, 10, 0.08) 0%, transparent 70%);
+    animation: co-fogPulse 10s ease-in-out infinite; opacity: 0.5
 }
-.co-bg-web-1 {
-    top: 0; right: 0;
-    width: 320px; height: 320px;
-    opacity: 0.07
-}
-.co-bg-web-2 {
-    top: 55%; right: 0;
-    width: 220px; height: 220px;
-    opacity: 0.045;
-    transform: scaleX(-1)
-}
-.co-bg-web-3 {
-    bottom: 5%; right: 10%;
-    width: 180px; height: 180px;
-    opacity: 0.035;
-    transform: rotate(90deg)
+@keyframes co-fogPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1) }
+    50% { opacity: 0.7; transform: scale(1.05) }
 }
 
+/* ═══ LEFT SIDE — LIGHT RAYS ═══ */
+.co-lightray {
+    position: absolute; left: 0; top: 0; width: 50%; height: 100%;
+    background:
+        linear-gradient(125deg, rgba(255, 200, 220, 0.04) 0%, transparent 30%),
+        linear-gradient(140deg, rgba(255, 180, 210, 0.03) 0%, transparent 25%);
+    animation: co-lightPulse 8s ease-in-out infinite
+}
+@keyframes co-lightPulse {
+    0%, 100% { opacity: 0.6 }
+    50% { opacity: 1 }
+}
 .co-header { display: none !important }
 .co-header-img { display: none !important }
 .co-header-fade { display: none !important }
@@ -989,6 +1035,9 @@ div.mt-2 { margin-top: 24px !important }
 
 /* ═══ MOBILE ═══ */
 @media (max-width: 640px) {
+    .co-bg-decor { opacity: 0.6 }
+    .co-scratch { display: none }
+    .co-bokeh { display: none }
     .co-page { padding: 0 10px }
     .co-header-img { height: 180px }
     .co-name { font-size: 1.6em; margin-top: -20px }
