@@ -65,27 +65,13 @@ div.mt-2>.font-size-message { display: none !important }
 
 body {
     background-color: #0c0c0e !important;
-    background-image: linear-gradient(180deg, #101014 0%, #0c0c0e 40%, #0a0a0c 100%) !important;
+    background-image: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.4) 20%, #0c0c0e 45%, #000000 100%) !important;
     position: relative !important;
     min-height: 100dvh !important;
     padding-bottom: 40px !important
 }
 
-/* ═══ SPLIT BACKGROUND ═══ */
-
-/* Left — FULL #ffc4cd */
-body::before {
-    content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
-    background: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.4) 40%, transparent 100%);
-    z-index: -1; pointer-events: none
-}
-
-/* Right — pure black */
-body::after {
-    content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
-    background: linear-gradient(to left, #000000 0%, #000000 60%, transparent 100%);
-    z-index: -1; pointer-events: none
-}
+/* ═══ SPLIT BACKGROUND — directly on body ═══ */
 
 /* Cracks — direct red image */
 .co-bg-decor::before {
