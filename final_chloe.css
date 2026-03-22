@@ -71,23 +71,28 @@ body {
     padding-bottom: 40px !important
 }
 
-/* Ambient glow — blue left, orange right */
+/* ═══ SPLIT BACKGROUND — sweet left, horror right ═══ */
+
+/* Left — warm pink, peaceful breathing */
 body::before {
     content: ''; position: fixed; left: -8%; top: -10%; width: 55%; height: 120%;
     background:
-        radial-gradient(ellipse 50% 30% at 20% 45%, rgba(255, 105, 180, 0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 25% 18% at 12% 35%, rgba(255, 105, 180, 0.04) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 35% at 22% 45%, rgba(255, 105, 180, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 22% at 10% 30%, rgba(255, 182, 213, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 20% 15% at 35% 70%, rgba(255, 105, 180, 0.04) 0%, transparent 50%);
     z-index: 0; pointer-events: none;
-    animation: co-glowFloat 10s ease-in-out infinite
+    animation: co-breatheLeft 8s ease-in-out infinite
 }
+
+/* Right — blood red, breathing + glitch flicker */
 body::after {
     content: ''; position: fixed; right: -8%; top: -10%; width: 55%; height: 120%;
     background:
-        radial-gradient(ellipse 50% 30% at 80% 55%, rgba(139, 26, 43, 0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 25% 18% at 88% 65%, rgba(139, 26, 43, 0.03) 0%, transparent 60%);
+        radial-gradient(ellipse 55% 35% at 78% 50%, rgba(139, 26, 43, 0.14) 0%, transparent 65%),
+        radial-gradient(ellipse 30% 22% at 90% 65%, rgba(100, 10, 20, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 20% 15% at 65% 30%, rgba(139, 26, 43, 0.05) 0%, transparent 50%);
     z-index: 0; pointer-events: none;
-    animation: co-glowFloat 10s ease-in-out infinite;
-    animation-delay: -5s
+    animation: co-breatheRightGlitch 8s ease-in-out infinite
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
@@ -429,6 +434,25 @@ div.mt-2 { margin-top: 24px !important }
 /* ═══ KEYFRAMES ═══ */
 @keyframes co-fadeUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
 @keyframes co-glowFloat { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8%) } }
+
+/* Left side — slow peaceful breathing */
+@keyframes co-breatheLeft {
+    0%, 100% { transform: translateY(0); opacity: 1 }
+    50% { transform: translateY(-6%); opacity: 0.85 }
+}
+
+/* Right side — breathing + sudden glitch flicker synced with border glitch timing */
+@keyframes co-breatheRightGlitch {
+    0%, 80% { transform: translateY(0); opacity: 1 }
+    40% { transform: translateY(-6%); opacity: 0.9 }
+    82% { opacity: 0.4; transform: translateY(0) translateX(2%) }
+    83% { opacity: 1.8; transform: translateY(0) translateX(-1%) }
+    84% { opacity: 0.2; transform: translateY(0) }
+    85% { opacity: 1.5; transform: translateY(0) translateX(1%) }
+    86% { opacity: 0.3; transform: translateY(0) translateX(-2%) }
+    87% { opacity: 1.6; transform: translateY(0) }
+    89%, 100% { opacity: 1; transform: translateY(0) }
+}
 @keyframes co-gradientShift { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
 @keyframes co-dividerShift {
     0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
