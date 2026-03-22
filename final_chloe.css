@@ -520,19 +520,14 @@ div.mt-2 { margin-top: 24px !important }
 
 .co-page { width: 100%; max-width: var(--co-page-width); margin: 0 auto; padding: 0 16px; position: relative; z-index: 2 }
 
-/* ═══ VHS NOISE OVERLAY ═══ */
+/* ═══ HORROR NOISE OVERLAY — subtle, static, reddish ═══ */
 .co-page::before {
     content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
-    opacity: 0.035;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size: 256px 256px;
-    animation: co-noiseShift 0.15s steps(3) infinite
-}
-@keyframes co-noiseShift {
-    0% { transform: translate(0, 0) }
-    33% { transform: translate(-5%, -5%) }
-    66% { transform: translate(5%, 3%) }
-    100% { transform: translate(-3%, 5%) }
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 512px 512px;
+    mix-blend-mode: screen;
+    background-color: rgba(139, 26, 43, 0.06)
 }
 .co-header { display: none !important }
 .co-header-img { display: none !important }
