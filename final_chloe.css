@@ -108,7 +108,7 @@ div.mt-4 { background: transparent !important; background-color: transparent !im
         display: grid !important; grid-template-columns: 1fr !important;
         grid-template-rows: 1fr auto auto !important; align-items: end !important;
         row-gap: 4px !important; overflow: visible !important;
-        position: relative !important; aspect-ratio: 16/9 !important; min-height: 200px !important;
+        position: relative !important; aspect-ratio: 16/9 !important; min-height: 200px !important; max-height: 420px !important;
         padding: 0 16px 0 !important; margin-bottom: 80px !important;
         border-radius: var(--co-radius) !important;
         background: url('https://curie-assets.site/images/Chloe_Header.webp') center 40% / cover no-repeat !important;
