@@ -73,10 +73,10 @@ body {
 
 /* ═══ SPLIT BACKGROUND ═══ */
 
-/* Left — light pink */
+/* Left — STRONG pink */
 body::before {
     content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
-    background: linear-gradient(to right, rgba(255, 196, 205, 0.15) 0%, transparent 100%);
+    background: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.4) 40%, transparent 100%);
     z-index: 0; pointer-events: none
 }
 
@@ -87,36 +87,21 @@ body::after {
     z-index: 0; pointer-events: none
 }
 
-/* Cracks — solid #fc152c shown through crack image as mask */
+/* Cracks — image directly, inverted to bright then colorized red */
 .co-bg-decor::before {
-    content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
-    background: #fc152c;
+    content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
+    background: url('https://curie-assets.site/images/chloe_cracks.webp') center center / cover no-repeat;
     z-index: 1; pointer-events: none;
-    -webkit-mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
-    mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat
+    filter: invert(1) sepia(1) saturate(50) hue-rotate(330deg) brightness(1.2)
 }
 
-/* Crack glow — same mask, blurred for red glow */
+/* Crack glow */
 .co-bg-decor::after {
-    content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
-    background: #fc152c;
+    content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
+    background: url('https://curie-assets.site/images/chloe_cracks.webp') center center / cover no-repeat;
     z-index: 0; pointer-events: none;
-    filter: blur(14px);
-    opacity: 0.35;
-    -webkit-mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
-    mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat
+    filter: invert(1) sepia(1) saturate(50) hue-rotate(330deg) brightness(1.5) blur(16px);
+    opacity: 0.4
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
