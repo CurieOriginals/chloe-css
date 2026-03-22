@@ -65,7 +65,7 @@ div.mt-2>.font-size-message { display: none !important }
 
 body {
     background-color: #0c0c0e !important;
-    background-image: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.3) 38%, #0c0c0e 53%, #000000 100%) !important;
+    background-image: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.3) 38%, #0c0c0e 50%, #000000 100%) !important;
     position: relative !important;
     min-height: 100dvh !important;
     padding-bottom: 40px !important
