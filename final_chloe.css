@@ -77,28 +77,28 @@ body {
 body::before {
     content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
     background: linear-gradient(to right, #ffc4cd 0%, rgba(255, 196, 205, 0.4) 40%, transparent 100%);
-    z-index: 0; pointer-events: none
+    z-index: -1; pointer-events: none
 }
 
 /* Right — pure black */
 body::after {
     content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
     background: linear-gradient(to left, #000000 0%, #000000 60%, transparent 100%);
-    z-index: 0; pointer-events: none
+    z-index: -1; pointer-events: none
 }
 
 /* Cracks — direct red image */
 .co-bg-decor::before {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
     background: url('https://curie-assets.site/images/chloe_cracks_red.webp') center / cover no-repeat;
-    z-index: 1; pointer-events: none
+    z-index: 0; pointer-events: none
 }
 
 /* Crack glow */
 .co-bg-decor::after {
     content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
     background: url('https://curie-assets.site/images/chloe_cracks_red.webp') center / cover no-repeat;
-    z-index: 1; pointer-events: none;
+    z-index: 0; pointer-events: none;
     filter: blur(14px); opacity: 0.4
 }
 
@@ -257,7 +257,7 @@ div.mt-4:has(svg.lucide-messages-square)>button.ant-btn:has(svg.lucide-messages-
     color: #fff !important; font-weight: 700 !important; font-size: 0.88em !important;
     border: none !important; clip-path: none !important; padding: 0 24px !important;
     border-radius: var(--co-radius-sm) !important;
-    box-shadow: 0 0 16px rgba(252, 21, 44, 0.4), 0 0 32px rgba(252, 21, 44, 0.15) !important;
+    box-shadow: 0 0 16px rgba(255, 105, 180, 0.4), 0 0 32px rgba(255, 105, 180, 0.15) !important;
     animation: none !important;
     transition: background .3s ease, box-shadow .3s ease !important
 }
@@ -443,12 +443,12 @@ div.mt-2 { margin-top: 24px !important }
 @keyframes co-glowFloat { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8%) } }
 @keyframes co-gradientShift { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
 @keyframes co-dividerShift {
-    0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(252, 21, 44, 0.3) }
+    0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
     86% { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5) }
     87% { background: var(--co-blood); box-shadow: 0 0 8px rgba(252, 21, 44, 0.5) }
-    88% { background: var(--co-pink); box-shadow: 0 0 4px rgba(252, 21, 44, 0.2) }
+    88% { background: var(--co-pink); box-shadow: 0 0 4px rgba(255, 105, 180, 0.2) }
     89% { background: var(--co-blood); box-shadow: 0 0 10px rgba(252, 21, 44, 0.6) }
-    91%, 100% { background: var(--co-pink); box-shadow: 0 0 8px rgba(252, 21, 44, 0.3) }
+    91%, 100% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
 }
 
 /* Border glitch — VHS flicker instead of smooth shift */
@@ -500,11 +500,11 @@ div.mt-2 { margin-top: 24px !important }
     90%, 100% { border-color: var(--co-pink); color: var(--co-pink) }
 }
 @keyframes co-glowShift {
-    0%, 82% { box-shadow: 0 0 12px rgba(252, 21, 44, 0.3), -4px 0 8px rgba(252, 21, 44, 0.2) }
+    0%, 82% { box-shadow: 0 0 12px rgba(255, 105, 180, 0.3), -4px 0 8px rgba(255, 105, 180, 0.2) }
     84% { box-shadow: 0 0 20px rgba(252, 21, 44, 0.6), 0 0 4px rgba(255, 255, 255, 0.3) }
-    86% { box-shadow: 0 0 6px rgba(252, 21, 44, 0.1) }
+    86% { box-shadow: 0 0 6px rgba(255, 105, 180, 0.1) }
     88% { box-shadow: 0 0 18px rgba(252, 21, 44, 0.5), 4px 0 10px rgba(252, 21, 44, 0.3) }
-    90%, 100% { box-shadow: 0 0 12px rgba(252, 21, 44, 0.3), -4px 0 8px rgba(252, 21, 44, 0.2) }
+    90%, 100% { box-shadow: 0 0 12px rgba(255, 105, 180, 0.3), -4px 0 8px rgba(255, 105, 180, 0.2) }
 }
 
 /* Legacy stubs */
@@ -536,7 +536,7 @@ div.mt-2 { margin-top: 24px !important }
 
 /* ═══ BACKGROUND DECORATIONS CONTAINER ═══ */
 .co-bg-decor {
-    position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden
 }
 
 /* ═══ LEFT SIDE — SAKURA PETALS ═══ */
