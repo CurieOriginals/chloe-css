@@ -71,28 +71,16 @@ body {
     padding-bottom: 40px !important
 }
 
-/* ═══ SPLIT BACKGROUND — sweet left, horror right ═══ */
-
-/* Left — warm pink, peaceful breathing */
+/* ═══ SPLIT BACKGROUND — subtle atmospheric tints ═══ */
 body::before {
-    content: ''; position: fixed; left: -8%; top: -10%; width: 55%; height: 120%;
-    background:
-        radial-gradient(ellipse 55% 35% at 22% 45%, rgba(255, 105, 180, 0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 30% 22% at 10% 30%, rgba(255, 182, 213, 0.06) 0%, transparent 55%),
-        radial-gradient(ellipse 20% 15% at 35% 70%, rgba(255, 105, 180, 0.04) 0%, transparent 50%);
-    z-index: 0; pointer-events: none;
-    animation: co-breatheLeft 8s ease-in-out infinite
+    content: ''; position: fixed; left: 0; top: 0; width: 50%; height: 100%;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.04) 0%, transparent 70%);
+    z-index: 0; pointer-events: none
 }
-
-/* Right — blood red, breathing + glitch flicker */
 body::after {
-    content: ''; position: fixed; right: -8%; top: -10%; width: 55%; height: 120%;
-    background:
-        radial-gradient(ellipse 55% 35% at 78% 50%, rgba(139, 26, 43, 0.14) 0%, transparent 65%),
-        radial-gradient(ellipse 30% 22% at 90% 65%, rgba(100, 10, 20, 0.08) 0%, transparent 55%),
-        radial-gradient(ellipse 20% 15% at 65% 30%, rgba(139, 26, 43, 0.05) 0%, transparent 50%);
-    z-index: 0; pointer-events: none;
-    animation: co-breatheRightGlitch 8s ease-in-out infinite
+    content: ''; position: fixed; right: 0; top: 0; width: 50%; height: 100%;
+    background: linear-gradient(225deg, rgba(139, 26, 43, 0.06) 0%, transparent 70%);
+    z-index: 0; pointer-events: none
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
@@ -434,25 +422,6 @@ div.mt-2 { margin-top: 24px !important }
 /* ═══ KEYFRAMES ═══ */
 @keyframes co-fadeUp { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: translateY(0) } }
 @keyframes co-glowFloat { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-8%) } }
-
-/* Left side — slow peaceful breathing */
-@keyframes co-breatheLeft {
-    0%, 100% { transform: translateY(0); opacity: 1 }
-    50% { transform: translateY(-6%); opacity: 0.85 }
-}
-
-/* Right side — breathing + sudden glitch flicker synced with border glitch timing */
-@keyframes co-breatheRightGlitch {
-    0%, 80% { transform: translateY(0); opacity: 1 }
-    40% { transform: translateY(-6%); opacity: 0.9 }
-    82% { opacity: 0.4; transform: translateY(0) translateX(2%) }
-    83% { opacity: 1.8; transform: translateY(0) translateX(-1%) }
-    84% { opacity: 0.2; transform: translateY(0) }
-    85% { opacity: 1.5; transform: translateY(0) translateX(1%) }
-    86% { opacity: 0.3; transform: translateY(0) translateX(-2%) }
-    87% { opacity: 1.6; transform: translateY(0) }
-    89%, 100% { opacity: 1; transform: translateY(0) }
-}
 @keyframes co-gradientShift { 0% { background-position: 0% 50% } 50% { background-position: 100% 50% } 100% { background-position: 0% 50% } }
 @keyframes co-dividerShift {
     0%, 85% { background: var(--co-pink); box-shadow: 0 0 8px rgba(255, 105, 180, 0.3) }
@@ -553,6 +522,71 @@ div.mt-2 { margin-top: 24px !important }
     mix-blend-mode: screen;
     background-color: rgba(139, 26, 43, 0.08)
 }
+/* ═══ FLOATING HEARTS — left side ═══ */
+.co-bg-hearts {
+    position: fixed; left: 0; top: 0; width: 45%; height: 100%;
+    z-index: 0; pointer-events: none; overflow: hidden
+}
+.co-heart {
+    position: absolute;
+    left: var(--x, 10%);
+    bottom: -30px;
+    font-size: var(--s, 16px);
+    color: rgba(255, 105, 180, 0.2);
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.15);
+    animation: co-floatHeart var(--dur, 14s) ease-in-out var(--d, 0s) infinite;
+    will-change: transform, opacity
+}
+@keyframes co-floatHeart {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0 }
+    10% { opacity: 1 }
+    50% { transform: translateY(-45vh) rotate(15deg); opacity: 0.8 }
+    80% { opacity: 0.4 }
+    100% { transform: translateY(-105vh) rotate(-10deg); opacity: 0 }
+}
+
+/* ═══ SPIDER WEBS — right side ═══ */
+.co-bg-web {
+    position: fixed; z-index: 0; pointer-events: none;
+    width: 280px; height: 280px;
+    opacity: 0.06;
+    background-image:
+        /* Radial threads from corner */
+        conic-gradient(from 180deg at 100% 0%,
+            transparent 0deg, rgba(139, 26, 43, 0.8) 0.5deg, transparent 1deg,
+            transparent 14deg, rgba(139, 26, 43, 0.6) 14.5deg, transparent 15deg,
+            transparent 29deg, rgba(139, 26, 43, 0.8) 29.5deg, transparent 30deg,
+            transparent 44deg, rgba(139, 26, 43, 0.5) 44.5deg, transparent 45deg,
+            transparent 59deg, rgba(139, 26, 43, 0.7) 59.5deg, transparent 60deg,
+            transparent 74deg, rgba(139, 26, 43, 0.6) 74.5deg, transparent 75deg,
+            transparent 89deg, rgba(139, 26, 43, 0.8) 89.5deg, transparent 90deg,
+            transparent 360deg
+        ),
+        /* Spiral rings */
+        radial-gradient(circle at 100% 0%, transparent 18%, rgba(139, 26, 43, 0.5) 18.5%, transparent 19%),
+        radial-gradient(circle at 100% 0%, transparent 35%, rgba(139, 26, 43, 0.4) 35.5%, transparent 36%),
+        radial-gradient(circle at 100% 0%, transparent 52%, rgba(139, 26, 43, 0.35) 52.5%, transparent 53%),
+        radial-gradient(circle at 100% 0%, transparent 68%, rgba(139, 26, 43, 0.3) 68.5%, transparent 69%),
+        radial-gradient(circle at 100% 0%, transparent 84%, rgba(139, 26, 43, 0.25) 84.5%, transparent 85%)
+}
+.co-bg-web-1 {
+    top: 0; right: 0;
+    width: 320px; height: 320px;
+    opacity: 0.07
+}
+.co-bg-web-2 {
+    top: 55%; right: 0;
+    width: 220px; height: 220px;
+    opacity: 0.045;
+    transform: scaleX(-1)
+}
+.co-bg-web-3 {
+    bottom: 5%; right: 10%;
+    width: 180px; height: 180px;
+    opacity: 0.035;
+    transform: rotate(90deg)
+}
+
 .co-header { display: none !important }
 .co-header-img { display: none !important }
 .co-header-fade { display: none !important }
