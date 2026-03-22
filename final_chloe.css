@@ -71,36 +71,52 @@ body {
     padding-bottom: 40px !important
 }
 
-/* ═══ SPLIT BACKGROUND — FLAT GLOW, NO CIRCLES ═══ */
+/* ═══ SPLIT BACKGROUND ═══ */
 
-/* Left — flat pink glow */
+/* Left — light pink */
 body::before {
     content: ''; position: fixed; left: 0; top: 0; width: 55%; height: 100%;
-    background: linear-gradient(to right, rgba(255, 105, 180, 0.1) 0%, transparent 100%);
+    background: linear-gradient(to right, rgba(255, 196, 205, 0.15) 0%, transparent 100%);
     z-index: 0; pointer-events: none
 }
 
-/* Right — pure black with blood red cracks */
+/* Right — pure black */
 body::after {
     content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
-    background:
-        url('https://curie-assets.site/images/chloe_cracks.webp') center center / contain no-repeat,
-        linear-gradient(to left, #000000 0%, #000000 60%, transparent 100%);
-    z-index: 0; pointer-events: none;
-    filter: brightness(0.6) sepia(1) saturate(5) hue-rotate(-30deg);
-    -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
-    mask-image: linear-gradient(to left, black 50%, transparent 100%)
+    background: linear-gradient(to left, #000000 0%, #000000 60%, transparent 100%);
+    z-index: 0; pointer-events: none
 }
 
-/* Crack glow layer */
+/* Cracks — solid #fc152c shown through crack image as mask */
 .co-bg-decor::before {
     content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
-    background: url('https://curie-assets.site/images/chloe_cracks.webp') center center / contain no-repeat;
+    background: #fc152c;
+    z-index: 1; pointer-events: none;
+    -webkit-mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
+    mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat
+}
+
+/* Crack glow — same mask, blurred for red glow */
+.co-bg-decor::after {
+    content: ''; position: fixed; right: 0; top: 0; width: 55%; height: 100%;
+    background: #fc152c;
     z-index: 0; pointer-events: none;
-    filter: brightness(0.4) sepia(1) saturate(8) hue-rotate(-30deg) blur(12px);
-    opacity: 0.4;
-    -webkit-mask-image: linear-gradient(to left, black 50%, transparent 100%);
-    mask-image: linear-gradient(to left, black 50%, transparent 100%)
+    filter: blur(14px);
+    opacity: 0.35;
+    -webkit-mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
+    mask-image: url('https://curie-assets.site/images/chloe_cracks.webp');
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat
 }
 
 .galaxy-bg { background-image: none !important; background-size: 0 !important }
